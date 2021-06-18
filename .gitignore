@@ -1,0 +1,10 @@
+env3.6/
+.idea
+__pycache__
+mockseries.egg-info
+build
+dist
+.coverage
+.mypy_cache
+notes.md
+demo.ipynb

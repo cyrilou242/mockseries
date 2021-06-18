@@ -1,0 +1,38 @@
+name: Build and Deploy
+on:
+  pull_request:
+    branches: [master]
+  push:
+    branches: [master]
+    tags:
+      - '[0-9]+.[0-9]+.[0-9]+'
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2.3.1
+      - name: Tests
+        run: make test
+      - name: Install and Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
+        if: !startsWith(github.ref, 'refs/tags')
+        run: |
+          cd website
+          npm install
+          npm run build
+      - name: Install and Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
+        if: startsWith(github.ref, 'refs/tags')
+        run: |
+          cd website
+          npm install
+          npm run build
+          npm run docusaurus docs:version ${GITHUB_REF#refs/*/v}
+      - name: Deploy Next 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          branch: gh-pages # The branch the action should deploy to.
+          folder: website/build # The folder the action should deploy.
+  on:
+    push:
+      branches:
+        - main
