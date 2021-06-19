@@ -41,4 +41,5 @@ def datetime_range(
 
 def delta_from_start(time_points: np.ndarray) -> np.ndarray:
     """Returns the timedeltas to the first element of the array."""
+    # todo move this
     return time_points - np.full(len(time_points), time_points[0])

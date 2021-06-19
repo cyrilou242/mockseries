@@ -27,7 +27,7 @@ class RedNoise(Noise):
         std: float,
         correlation: float,
         interaction: Interaction,
-        random_seed: Optional[int]=None,
+        random_seed: Optional[int] = None,
     ) -> None:
         super().__init__(interaction, random_seed)
         self.mean = mean
