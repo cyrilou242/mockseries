@@ -20,14 +20,14 @@ jobs:
           cd website
           npm install
           npm run build
-      - name: Install and Build 🔧
+      - name: Version Doc 🔧
         if: startsWith(github.ref, 'refs/tags')
         run: |
           cd website
           npm install
           npm run build
           npm run docusaurus docs:version ${GITHUB_REF#refs/*/v}
-      - name: Deploy Next 🚀
+      - name: Deploy Doc 🚀
         if: startsWith(github.ref, 'refs/tags')  || startsWith(github.ref, 'ref/head/main')
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
