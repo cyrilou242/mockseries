@@ -1,0 +1,22 @@
+[tool.black]
+line-length = 88
+target-version = ['py36', 'py37', 'py38']
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.mypy_cache
+  | \.tox
+  | \.env.*
+  | \.venv
+  | venv
+  | env3.6
+  | env
+  | _build
+  | build
+  | dist
+  | notebooks
+  | website
+
+)/
+'''

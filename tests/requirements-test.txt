@@ -1,0 +1,9 @@
+black>=21.6b0
+flake8>=3.9.2
+flaky>=3.7.0
+isort>=5.8.0
+pydocstyle>=6.1.1
+pytest>=6.2.4
+pytest-doctestplus>=0.9.0
+pytest-cov==2.12.1
+mypy==0.902
