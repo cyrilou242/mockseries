@@ -29,10 +29,6 @@ module.exports = {
           position: 'right',
           label: 'API',
         },
-        {
-          type: 'docsVersionDropdown',
-          position: 'left',
-        },
         {to: '/blog', label: 'Blog', position: 'right'},
         {
           href: 'https://github.com/cyrilou242/mockseries',
