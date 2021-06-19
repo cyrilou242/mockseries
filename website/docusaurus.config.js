@@ -47,6 +47,10 @@ module.exports = {
               label: 'Tutorial',
               to: '/docs/intro',
             },
+            {
+              label: 'API',
+              to: '/docs/API\ Documentation/mockseries/main',
+            },
           ],
         },
         {
@@ -56,6 +60,10 @@ module.exports = {
               label: 'Stack Overflow',
               href: 'https://stackoverflow.com/questions/tagged/mockseries',
             },
+            {
+              label: 'GitHub',
+              href: 'https://github.com/cyrilou242/mockseries',
+            },
           ],
         },
         {
@@ -64,10 +72,6 @@ module.exports = {
             {
               label: 'Blog',
               to: '/blog',
-            },
-            {
-              label: 'GitHub',
-              href: 'https://github.com/cyrilou242/mockseries',
             },
           ],
         },
