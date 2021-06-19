@@ -22,15 +22,8 @@ jobs:
           cd website
           npm install
           npm run build
-      - name: Build versioned Doc 🔧
-        if: startsWith(github.ref, 'refs/tags')
-        run: |
-          cd website
-          npm install
-          npm run build
-          npm run docusaurus docs:version ${GITHUB_REF#refs/*/v}
       - name: Deploy Doc 🚀
-        if: ${{ github.event_name == 'push' }}
+        if: startsWith(github.ref, 'refs/tags')
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
           branch: gh-pages # The branch the action should deploy to.
