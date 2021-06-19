@@ -16,7 +16,7 @@ jobs:
       - name: Tests
         run: make test
       - name: Generate Markdown from DocString
-          run: make doc
+        run: make doc
       - name: Build doc 🔧
         run: |
           cd website
