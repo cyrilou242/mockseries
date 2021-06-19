@@ -32,7 +32,7 @@ prep-package:
 	pip install wheel
 
 package:         ## Create python package resources
-package: prep-package
+package:
 	@python setup.py sdist bdist_wheel
 
 doc-dep-install:

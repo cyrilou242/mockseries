@@ -26,7 +26,7 @@ class GaussianNoise(Noise):
         mean: float,
         std: float,
         interaction: Interaction,
-        random_seed: Optional[int],
+        random_seed: Optional[int] = None,
     ) -> None:
         super().__init__(interaction, random_seed)
         self.mean = mean
