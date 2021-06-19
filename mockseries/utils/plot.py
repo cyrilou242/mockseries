@@ -18,13 +18,15 @@ def plot_timeseries(
     time_points: Collection[datetime],
     timeseries: Union[np.ndarray, List[np.ndarray]],
     titles: Optional[Union[str, List[str]]] = None,
+    graph_title: Optional[str] = None,
 ) -> None:
     """Plots timeseries.
 
     Args:
         time_points: The timeseries index. A list of datetimes.
         timeseries: A timeseries or a list of timeseries.
-        titles: A title or a list of titles. If not passed, timeseries are numbered by order.
+        titles: A title or a list of titles for the timeseries. If not passed, timeseries are numbered by order.
+        graph_title: Title of the  graph. If not passed, the graph has no title.
     """
 
     if not isinstance(timeseries, list):
@@ -39,6 +41,8 @@ def plot_timeseries(
         for values, title in zip(timeseries, titles):
             plt.plot(time_points, values, label=title)
 
-        plt.legend(title="Timeseries")
+        if graph_title:
+            plt.title(graph_title)
+
         plt.xticks(rotation=45)
         plt.show()
