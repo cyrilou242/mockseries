@@ -1,7 +1,7 @@
-name: Publish distributions to TestPyPI and PyPI
+name: Test, Build, Publish
 on: push
 jobs:
-  build-and-publish:
+  test-build-publish:
     environment: deploy
     name: Publish distributions to Test PyPI and PyPI
     runs-on: ubuntu-18.04
