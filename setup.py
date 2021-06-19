@@ -11,7 +11,7 @@ setup(
     license="All Rights Reserved to Cyril de Catheu.",
     author="Cyril de Catheu",
     author_email="cdecatheu@hey.com",
-    description="mockseries is a Python package that helps generate synthetic (mock) timeseries (ts).",
+    description="Easy and intuitive generation of synthetic timeseries.",
     install_requires=[
         "numpy==1.19.5",
     ],
