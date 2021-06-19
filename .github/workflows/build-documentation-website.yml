@@ -22,8 +22,14 @@ jobs:
           cd website
           npm install
           npm run build
+      - name: Build doc 🔧
+          run: |
+            echo ${{ startsWith(github.ref, 'refs/tags') || (github.ref == 'refs/heads/main' && contains(github.event.commits[0].message, 'deploy-doc')) }}
+            echo ${{ github.ref == 'refs/heads/main' && contains(github.event.commits[0].message, 'deploy-doc') }}
+            echo ${{ github.ref == 'refs/heads/main' }}
+            echo ${{ contains(github.event.commits[0].message, 'deploy-doc')) }}
       - name: Deploy Doc 🚀
-        if: ${{ startsWith(github.ref, 'refs/tags') || (github.ref == 'refs/heads/main' && contains(github.event.commits[0].message, '[deploy doc]')) }}
+        if: ${{ startsWith(github.ref, 'refs/tags') || (github.ref == 'refs/heads/main' && contains(github.event.commits[0].message, 'deploy-doc')) }}
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
           branch: gh-pages # The branch the action should deploy to.
