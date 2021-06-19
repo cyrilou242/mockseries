@@ -8,6 +8,7 @@ on:
       - '[0-9]+.[0-9]+.[0-9]+'
 jobs:
   build-and-deploy:
+    environment: deploy
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
