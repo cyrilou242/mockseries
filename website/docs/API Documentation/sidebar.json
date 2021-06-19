@@ -2,7 +2,9 @@
   "items": [
     {
       "items": [
-        "API Documentation/mockseries/interaction/interaction"
+        "API Documentation/mockseries/interaction/additive_interaction",
+        "API Documentation/mockseries/interaction/interaction",
+        "API Documentation/mockseries/interaction/multiplicative_interaction"
       ],
       "label": "mockseries.interaction",
       "type": "category"
@@ -10,6 +12,7 @@
     {
       "items": [
         "API Documentation/mockseries/noise/gaussian_noise",
+        "API Documentation/mockseries/noise/noise",
         "API Documentation/mockseries/noise/red_noise"
       ],
       "label": "mockseries.noise",
@@ -17,6 +20,23 @@
     },
     {
       "items": [
+        "API Documentation/mockseries/seasonality/seasonality",
+        "API Documentation/mockseries/seasonality/sinusoidal_seasonality"
+      ],
+      "label": "mockseries.seasonality",
+      "type": "category"
+    },
+    {
+      "items": [
+        "API Documentation/mockseries/timeseries/base_timeseries",
+        "API Documentation/mockseries/timeseries/timeseries"
+      ],
+      "label": "mockseries.timeseries",
+      "type": "category"
+    },
+    {
+      "items": [
+        "API Documentation/mockseries/trend/base_trend",
         "API Documentation/mockseries/trend/exponential_trend",
         "API Documentation/mockseries/trend/flat_trend",
         "API Documentation/mockseries/trend/linear_trend"

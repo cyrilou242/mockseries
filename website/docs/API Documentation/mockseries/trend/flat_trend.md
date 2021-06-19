@@ -9,5 +9,13 @@ title: mockseries.trend.flat_trend
 class FlatTrend(BaseTrend)
 ```
 
-y=start_value
+y=start_value.
+
+#### sample\_at
+
+```python
+ | sample_at(time_points: np.ndarray, start_level: float) -> np.ndarray
+```
+
+Sample the trend components.
 

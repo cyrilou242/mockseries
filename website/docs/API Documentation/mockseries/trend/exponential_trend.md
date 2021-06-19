@@ -9,5 +9,13 @@ title: mockseries.trend.exponential_trend
 class ExponentialTrend(BaseTrend)
 ```
 
-y=start_value*(a**t)
+y=start_value*(a**t).
+
+#### sample\_at
+
+```python
+ | sample_at(time_points: np.ndarray, start_level: float) -> np.ndarray
+```
+
+Sample the trend components.
 

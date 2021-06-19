@@ -1,15 +1,15 @@
 ---
-sidebar_label: linear_trend
-title: mockseries.trend.linear_trend
+sidebar_label: base_trend
+title: mockseries.trend.base_trend
 ---
 
-## LinearTrend Objects
+## BaseTrend Objects
 
 ```python
-class LinearTrend(BaseTrend)
+class BaseTrend(object)
 ```
 
-y=start_value+at.
+Trend interface.
 
 #### sample\_at
 

@@ -4,32 +4,31 @@ import styles from './HomepageFeatures.module.css';
 
 const FeatureList = [
   {
-    title: 'Easy to Use',
+    title: 'Intuitive',
     Svg: require('../../static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Build synthetic timeseries at the speed of thought.
+          Add trend, noise and seasonality. Generate and iterate quickly.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
+    title: 'Here to help',
     Svg: require('../../static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+          <b>mockseries</b> provides opiniated helpers so that you don't waste your time on dates and plots.
+        Go fast with high-level components. Go deep by extending the low-level interfaces.
       </>
     ),
   },
   {
-    title: 'Powered by React',
+    title: 'Light and fast',
     Svg: require('../../static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Numpy is the only dependency. All embarassingly parallel computations are fast thanks to array operations.
       </>
     ),
   },

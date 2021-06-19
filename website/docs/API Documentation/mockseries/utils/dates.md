@@ -25,3 +25,11 @@ You can either use `end_time` or `num_points` to set the end of the range.
 
   A list of datetimes.
 
+#### delta\_from\_start
+
+```python
+delta_from_start(time_points: np.ndarray) -> np.ndarray
+```
+
+Returns the timedeltas to the first element of the array.
+

@@ -9,6 +9,8 @@ title: mockseries.interaction.interaction
 class Interaction(object)
 ```
 
+Components interaction interface.
+
 #### generate\_component
 
 ```python
