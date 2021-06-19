@@ -1,9 +1,9 @@
 name: Build and Deploy
 on:
   pull_request:
-    branches: [master]
+    branches: [main]
   push:
-    branches: [master]
+    branches: [main]
     tags:
       - '[0-9]+.[0-9]+.[0-9]+'
 jobs:
@@ -27,11 +27,8 @@ jobs:
           npm run build
           npm run docusaurus docs:version ${GITHUB_REF#refs/*/v}
       - name: Deploy Next 🚀
+        if: startsWith(github.ref, 'refs/tags')  || startsWith(github.ref, 'ref/head/main')
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
           branch: gh-pages # The branch the action should deploy to.
           folder: website/build # The folder the action should deploy.
-  on:
-    push:
-      branches:
-        - main
