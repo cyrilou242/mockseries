@@ -66,3 +66,6 @@ plot_timeseries(ts_index, ts_values, save_path="hello_mockseries.png")
 write_csv(ts_index, ts_values, "hello_mockseries.csv")
 ```
 
+### References
+- J. R. Maat, A. Malali, and P. Protopapas, “TimeSynth: A Multipurpose Library for Synthetic Time Series in Python,” 2017. [Online]. Available: http://github.com/TimeSynth/TimeSynth.
+- TStimulus. Available: https://github.com/cetic/TSimulus.
