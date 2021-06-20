@@ -4,9 +4,9 @@ from typing import List
 import numpy as np
 
 
-class BaseTimeSeries(object):
-    """TimeSeries interface."""
+class Generator(object):
+    """Generator interface."""
 
     def generate(self, times: List[datetime]) -> np.ndarray:
-        """Generate the timeseries values."""
+        """Generate the values."""
         raise NotImplementedError()

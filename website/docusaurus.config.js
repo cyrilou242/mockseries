@@ -25,9 +25,9 @@ module.exports = {
         },
         {
           type: 'doc',
-          docId: 'API\ Documentation/mockseries/main',
+          docId: 'API\ Reference/mockseries/main',
           position: 'right',
-          label: 'API',
+          label: 'API Reference',
         },
         {to: '/blog', label: 'Blog', position: 'right'},
         {
@@ -48,8 +48,8 @@ module.exports = {
               to: '/docs/intro',
             },
             {
-              label: 'API',
-              to: '/docs/API\ Documentation/mockseries/main',
+              label: 'API Reference',
+              to: '/docs/API Reference/mockseries/main',
             },
           ],
         },

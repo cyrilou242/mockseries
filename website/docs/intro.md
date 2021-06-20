@@ -1,35 +1,86 @@
 ---
 sidebar_position: 1
+title: Getting started
 ---
 
-# Tutorial Intro
+# Getting Started
 
-Let's discover **Docusaurus in less than 5 minutes**.
+Let's discover **mockseries in less than 5 minutes** 🚀
 
-## Getting Started
-
-Get started by **creating a new site**.
-
-Or **try Docusaurus immediately** with **[new.docusaurus.io](https://new.docusaurus.io)**.
-
-## Generate a new site
-
-Generate a new Docusaurus site using the **classic template**:
+## 1. Install mockseries
 
 ```shell
-npx @docusaurus/init@latest init my-website classic
+pip install mockseries
 ```
 
-## Start your site
+## 2. Create a timeseries generator
 
-Run the development server:
+A timeseries can be expressed as a [combination of 3 components](https://otexts.com/fpp2/components.html): trend, seasonality and noise.  
 
-```shell
-cd my-website
+The trend is the long term, average change of the timeseries, such as the increase in CO2 emissions.  
+Seasonality is a cyclic pattern in the timeseries, such as the impact of the day-night cycle.  
+Noise represents irregular and random changes of the timeseries.   
 
-npx docusaurus start
+```python
+from datetime import timedelta
+from mockseries.generator import TimeSeries
+from mockseries.interaction import ADDITIVE
+from mockseries.noise import RedNoise
+from mockseries.seasonality import SinusoidalSeasonality
+from mockseries.trend.linear_trend import LinearTrend
+
+
+ts_generator = TimeSeries(
+    start_level=100,
+    trend=LinearTrend(coefficient=2, time_unit=timedelta(days=4)),
+    seasonalities=[
+        SinusoidalSeasonality(amplitude=20, period=timedelta(days=7), interaction=ADDITIVE),
+        SinusoidalSeasonality(amplitude=4, period=timedelta(days=1), interaction=ADDITIVE),
+    ],
+    noise=RedNoise(mean=0, std=3, correlation=0.5, interaction=ADDITIVE),
+)
+```  
+Here, **2** seasonalities **with a different period are combined**. It's as easy as putting them in a list !  
+Many types of trends, seasonalities and noises are available, just combine them with the `TimeSeries` class.  
+
+
+## 3. Generate values 
+Sample your timeseries on a timeframe.  
+```python
+from datetime import datetime
+from mockseries.utils import datetime_range
+
+time_points = datetime_range(
+    granularity=timedelta(hours=1),
+    start_time=datetime(2021, 5, 31),
+    end_time=datetime(2021, 8, 30),
+)
+ts_values = ts_generator.generate(time_points=time_points)
 ```
+`datetime_range` helps you get the time points of a given granularity in a timeframe.  
+For instance:  
+timeframe of 1 hour, with a granularity of 1 **minute**: 60 points;  
+timeframe of 1 hour, with a granularity of 1 **second**: 3600 points. 
 
-Your site starts at `http://localhost:3000`.
+## 4. Plot or write to csv 
+```python
+from mockseries.utils import plot_timeseries, write_csv
 
-Open `docs/intro.md` and edit some lines: the site **reloads automatically** and display your changes.
+plot_timeseries(time_points, ts_values)
+write_csv(time_points, ts_values, "hello_mockseries.csv")
+```
+You will get something like this:
+
+<div style={{textAlign:'center'}}>
+
+![Getting started timeseries](/img/tutorial/getting_started_timeseries.png)
+
+</div>   
+
+Now it's your turn !  
+Go to the next page to understand the two type of interactions between components.  
+Go directly to the [API Reference](./API%20Reference/mockseries/main) to checkout the available types of trends, seasonalities and noises.
+
+
+
+
