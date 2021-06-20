@@ -1,3 +1,4 @@
+import warnings
 from datetime import datetime
 from typing import Collection, List, Optional, Union
 
@@ -33,6 +34,11 @@ def plot_timeseries(
 
     if not isinstance(timeseries, list):
         timeseries = [timeseries]
+    else:
+        if isinstance(timeseries[0], float) or isinstance(timeseries[0], int):
+            warnings.warn("List of {} passed instead of a np.ndarray. Converting to np array.".format(type(timeseries[0])))
+            timeseries = [np.array(timeseries)]
+
     if not titles:
         titles = ["Line {}".format(i) for i in range(1, len(timeseries) + 1)]
     elif isinstance(titles, str):
