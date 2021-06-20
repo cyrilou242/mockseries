@@ -8,6 +8,6 @@ processors:
 renderer:
   type: docusaurus
   docs_base_path: website/docs
-  relative_output_path: "API Documentation"
+  relative_output_path: "API Reference"
   relative_sidebar_path: sidebar.json
   sidebar_top_level_label: null

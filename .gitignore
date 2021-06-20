@@ -8,4 +8,5 @@ dist
 .mypy_cache
 notes.md
 demo.ipynb
-website/docs/API Documentation
+website/docs/API Reference
+temp

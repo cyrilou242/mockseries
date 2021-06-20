@@ -9,13 +9,13 @@ from typing import List, Optional, Union
 
 import numpy as np
 
+from mockseries.generator.generator import Generator
 from mockseries.noise.noise import Noise
 from mockseries.seasonality.seasonality import Seasonality
-from mockseries.timeseries.base_timeseries import BaseTimeSeries
 from mockseries.trend.base_trend import BaseTrend
 
 
-class TimeSeries(BaseTimeSeries):
+class TimeSeries(Generator):
     """Timeseries generator."""
 
     def __init__(

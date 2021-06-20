@@ -23,3 +23,10 @@
   margin: 0 calc(-1 * var(--ifm-pre-padding));
   padding: 0 var(--ifm-pre-padding);
 }
+
+.hero--primary {
+  background-image: url("./img/wave.svg");
+  background-color: rgb(146, 224, 208);
+  background-repeat: no-repeat;
+  background-size: cover;
+}

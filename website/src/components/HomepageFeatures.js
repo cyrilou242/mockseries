@@ -28,7 +28,7 @@ const FeatureList = [
     Svg: require('../../static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        The only dependency is NumPy. All embarassingly parallel computations exploits its fast array operations.
+        The only dependency is NumPy. All embarassingly parallel computations exploit its fast array operations.
       </>
     ),
   },
