@@ -10,4 +10,4 @@ class MultiplicativeInteraction(Interaction):
         self, samples: np.ndarray, trend_components: np.ndarray
     ) -> np.ndarray:
         """Compute components for a multiplicative relationship."""
-        return trend_components * samples
+        return trend_components * samples - trend_components
