@@ -14,10 +14,6 @@ class ExponentialTrend(Trend):
         self.time_unit = time_unit
         self.base = base
 
-    def __neg__(self) -> "ExponentialTrend":
-        """Get the opposite of a trend."""
-        return ExponentialTrend(self.factor, self.time_unit, -self.base)
-
     def _sample_at(self, time_points: np.ndarray) -> np.ndarray:
         """Sample the trend components."""
         return self.base * self.factor ** (

@@ -32,17 +32,8 @@ class GaussianNoise(Noise):
         self.mean = mean
         self.std = std
 
-    def __neg__(self) -> "GaussianNoise":
-        return GaussianNoise(-self.mean, self.std, self.random_seed)
-
-    def __rmul__(self, other: Union[float, int]) -> "GaussianNoise":
-        """Multiply the standard deviation."""
-        if isinstance(other, int) or isinstance(other, float):
-            return GaussianNoise(
-                self.mean * other, self.std * other * other, self.random_seed
-            )
-        raise ValueError("Incompatible type for multiplication.")
-
     def _sample_at(self, time_points: np.ndarray) -> np.ndarray:
         """Samples a gaussian noise."""
+        if self.random_seed:
+            np.random.seed(self.random_seed)
         return np.random.normal(loc=self.mean, scale=self.std, size=len(time_points))

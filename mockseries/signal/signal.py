@@ -47,7 +47,7 @@ class Signal:
 
     def __neg__(self) -> "Signal":
         """Get the opposite of a signal."""
-        raise NotImplementedError
+        return ComposedSignal(MultiplicativeInteraction(), self, FlatTrend(-1))
 
     def __rmul__(self, other: Union[float, int]) -> "Signal":
         """Multiplies by a constant."""

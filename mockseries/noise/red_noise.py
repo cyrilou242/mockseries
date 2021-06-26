@@ -34,23 +34,12 @@ class RedNoise(Noise):
             raise ValueError("Correlation coefficient r has to be between 0 and 1.")
         self.correlation = correlation
 
-    def __neg__(self) -> "RedNoise":
-        return RedNoise(-self.mean, self.std, self.correlation, self.random_seed)
-
-    def __rmul__(self, other: Union[float, int]) -> "RedNoise":
-        """Multiply the standard deviation."""
-        if isinstance(other, int) or isinstance(other, float):
-            return RedNoise(
-                self.mean * other,
-                self.std * other * other,
-                self.correlation,
-                self.random_seed,
-            )
-        raise ValueError("Incompatible type for multiplication.")
-
     def _sample_at(self, time_points: np.ndarray) -> np.ndarray:
         """Samples a red noise."""
         # todo optimize
+        if self.random_seed:
+            np.random.seed(self.random_seed)
+
         white_noise = np.random.normal(
             loc=self.mean, scale=self.std, size=len(time_points)
         )
