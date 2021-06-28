@@ -1,5 +1,4 @@
 from datetime import timedelta
-from typing import Union
 
 import numpy as np
 
