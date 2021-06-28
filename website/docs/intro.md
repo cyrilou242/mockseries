@@ -23,25 +23,21 @@ Noise represents irregular and random changes of the timeseries.
 
 ```python
 from datetime import timedelta
-from mockseries.generator import TimeSeries
-from mockseries.interaction import ADDITIVE
-from mockseries.noise import RedNoise
+from mockseries.trend import LinearTrend
 from mockseries.seasonality import SinusoidalSeasonality
-from mockseries.trend.linear_trend import LinearTrend
+from mockseries.noise import RedNoise
 
+trend = LinearTrend(coefficient=2, time_unit=timedelta(days=4), flat_base=100)
+seasonality = SinusoidalSeasonality(amplitude=20, period=timedelta(days=7)) \
+              + SinusoidalSeasonality(amplitude=4, period=timedelta(days=1))
+noise = RedNoise(mean=0, std=3, correlation=0.5)
 
-ts_generator = TimeSeries(
-    start_level=100,
-    trend=LinearTrend(coefficient=2, time_unit=timedelta(days=4)),
-    seasonalities=[
-        SinusoidalSeasonality(amplitude=20, period=timedelta(days=7), interaction=ADDITIVE),
-        SinusoidalSeasonality(amplitude=4, period=timedelta(days=1), interaction=ADDITIVE),
-    ],
-    noise=RedNoise(mean=0, std=3, correlation=0.5, interaction=ADDITIVE),
-)
+timeseries = trend + seasonality + noise
 ```  
-Here, **2** seasonalities **with a different period are combined**. It's as easy as putting them in a list !  
-Many types of trends, seasonalities and noises are available, just combine them with the `TimeSeries` class.  
+Here, **2** seasonalities **with a different period** are combined. It's as easy as an addition !  
+Many types of trends, seasonalities and noises are available.  
+Just combine them with the operators **+**, **-** and **\***.  
+
 
 
 ## 3. Generate values 
@@ -55,7 +51,7 @@ time_points = datetime_range(
     start_time=datetime(2021, 5, 31),
     end_time=datetime(2021, 8, 30),
 )
-ts_values = ts_generator.generate(time_points=time_points)
+ts_values = timeseries.generate(time_points=time_points)
 ```
 `datetime_range` helps you get the time points of a given granularity in a timeframe.  
 For instance:  
@@ -78,7 +74,7 @@ You will get something like this:
 </div>   
 
 Now it's your turn !  
-Go to the next page to understand the two type of interactions between components.  
+Go to the next page to explore interactions between components.  
 Go directly to the [API Reference](./API%20Reference/mockseries/main) to checkout the available types of trends, seasonalities and noises.
 
 

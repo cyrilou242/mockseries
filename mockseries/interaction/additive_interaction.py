@@ -6,9 +6,8 @@ from mockseries.interaction.interaction import Interaction
 class AdditiveInteraction(Interaction):
     """Implementation of the additive relation for timeseries."""
 
-    def generate_component(
-        self, samples: np.ndarray, trend_components: np.ndarray
-    ) -> np.ndarray:
-        """Compute components for an additive relationship."""
-        # additive does not depend on current trend values
-        return samples
+    BASE_VALUE = 0.0
+
+    def interact(self, *component: np.ndarray) -> np.ndarray:
+        """Compute the additive interaction of multiple components."""
+        return np.add.reduce(component, initial=self.BASE_VALUE)

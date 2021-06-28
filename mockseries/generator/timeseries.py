@@ -5,34 +5,29 @@ This make the computation of such timeseries and embarrassingly parallel problem
 so the sample is performed with numpy array operations.
 """
 from datetime import datetime
-from typing import List, Optional, Union
+from typing import List, Optional
 
 import numpy as np
 
-from mockseries.generator.generator import Generator
+from mockseries.interaction.interaction import Interaction
 from mockseries.noise.noise import Noise
 from mockseries.seasonality.seasonality import Seasonality
-from mockseries.trend.base_trend import BaseTrend
+from mockseries.trend.trend import Trend
 
 
-class TimeSeries(Generator):
+class TimeSeries:
     """Timeseries generator."""
 
     def __init__(
         self,
-        start_level: float,
-        trend: BaseTrend,
-        seasonalities: Optional[Union[Seasonality, List[Seasonality]]] = None,
+        interaction: Interaction,
+        trend: Optional[Trend],
+        seasonality: Optional[Seasonality] = None,
         noise: Optional[Noise] = None,
     ):
-        self.start_level = start_level
-        self.level = start_level
+        self.interaction = interaction
         self.trend = trend
-        # parse list or not
-        if seasonalities is None or isinstance(seasonalities, list):
-            self.seasonalities = seasonalities
-        else:
-            self.seasonalities = [seasonalities]
+        self.seasonality = seasonality
         self.noise = noise
 
     def generate(
@@ -41,20 +36,20 @@ class TimeSeries(Generator):
         """Generate the timeseries values."""
         if random_seed:
             np.random.seed(random_seed)
+
         time_points = np.array(time_points)
-        trend_components = self.trend.sample_at(time_points, self.start_level)
+        components = []
+        if self.trend:
+            trend_component = self.trend._sample_at(time_points)
+            components.append(trend_component)
 
-        seasonality_components = np.zeros(len(time_points))
-        if self.seasonalities:
-            # assumes seasonalities are independent, ie draw from trend_components for value based and multiplicative seasonalities
-            for seasonality in self.seasonalities:
-                seasonality_components += seasonality.sample_at(
-                    time_points, trend_components
-                )
+        if self.seasonality:
+            seasonality_component = self.seasonality._sample_at(time_points)
+            components.append(seasonality_component)
 
-        noise_components = np.zeros(len(time_points))
-        # assumes noise is independent from seasonalities, ie draw from trend_components for value based and multiplicative components
         if self.noise:
-            noise_components = self.noise.sample(trend_components)
+            noise_component = self.noise._sample_at(time_points)
+            components.append(noise_component)
 
-        return trend_components + seasonality_components + noise_components
+        # TODO give a way to return separated components
+        return self.interaction.interact(*components)

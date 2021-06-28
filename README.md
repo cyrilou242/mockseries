@@ -19,31 +19,23 @@ Standards, objectives and process not defined yet.
     
 ## Quick Run
 
-#### Define a generator
+#### Define a timeseries
 
 ```python
-from mockseries.generator import TimeSeries
-from mockseries.interaction import ADDITIVE
-from mockseries.noise import RedNoise
+from datetime import timedelta
+from mockseries.trend import LinearTrend
 from mockseries.seasonality import SinusoidalSeasonality
-from mockseries.trend.linear_trend import LinearTrend
+from mockseries.noise import RedNoise
 
-ts_generator = TimeSeries(
-    start_level=100,
-    trend=LinearTrend(coefficient=2, time_unit=timedelta(days=4)),
-    seasonalities=[
-        SinusoidalSeasonality(
-            amplitude=20, period=timedelta(days=7), interaction=ADDITIVE
-        ),
-        SinusoidalSeasonality(
-            amplitude=4, period=timedelta(days=1), interaction=ADDITIVE
-        ),
-    ],
-    noise=RedNoise(mean=0, std=3, correlation=0.5, interaction=ADDITIVE),
-)
+trend = LinearTrend(coefficient=2, time_unit=timedelta(days=4), flat_base=100)
+seasonality = SinusoidalSeasonality(amplitude=20, period=timedelta(days=7)) \
+              + SinusoidalSeasonality(amplitude=4, period=timedelta(days=1))
+noise = RedNoise(mean=0, std=3, correlation=0.5)
+
+timeseries = trend + seasonality + noise
 ```
 
-#### Generate
+#### Generate values
 
 ``` 
 from datetime import datetime
@@ -54,7 +46,7 @@ ts_index = datetime_range(
     start_time=datetime(2021, 5, 31),
     end_time=datetime(2021, 8, 30),
 )
-ts_values = ts_generator.generate(ts_index)
+ts_values = timeseries.generate(ts_index)
 ```
 
 #### Plot or write to csv

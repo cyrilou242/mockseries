@@ -6,8 +6,8 @@ from mockseries.interaction.interaction import Interaction
 class MultiplicativeInteraction(Interaction):
     """Implementation of the multiplication relation for timeseries."""
 
-    def generate_component(
-        self, samples: np.ndarray, trend_components: np.ndarray
-    ) -> np.ndarray:
-        """Compute components for a multiplicative relationship."""
-        return trend_components * samples - trend_components
+    BASE_VALUE = 1.0
+
+    def interact(self, *component: np.ndarray) -> np.ndarray:
+        """Compute the multiplicative interaction of 2 components."""
+        return np.multiply.reduce(component, initial=self.BASE_VALUE)

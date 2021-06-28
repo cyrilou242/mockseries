@@ -2,19 +2,20 @@ from datetime import timedelta
 
 import numpy as np
 
-from mockseries.trend.base_trend import BaseTrend
+from mockseries.trend.trend import Trend
 from mockseries.utils.dates import delta_from_start
 
 
-class ExponentialTrend(BaseTrend):
-    """y=start_value*(a**t)."""
+class ExponentialTrend(Trend):
+    """y=base_value+(a**t)."""
 
-    def __init__(self, factor: float, time_unit: timedelta) -> None:
+    def __init__(self, factor: float, time_unit: timedelta, base: float = 1) -> None:
         self.factor = factor
         self.time_unit = time_unit
+        self.base = base
 
-    def sample_at(self, time_points: np.ndarray, start_level: float) -> np.ndarray:
+    def _sample_at(self, time_points: np.ndarray) -> np.ndarray:
         """Sample the trend components."""
-        return start_level * self.factor ** (
+        return self.base * self.factor ** (
             delta_from_start(time_points) / self.time_unit
         )
