@@ -3,7 +3,7 @@ loaders:
 processors:
   - type: filter
     skip_empty_modules: true
-  - type: smart
+  - type: google
   - type: crossref
 renderer:
   type: docusaurus
@@ -11,3 +11,7 @@ renderer:
   relative_output_path: "API Reference"
   relative_sidebar_path: sidebar.json
   sidebar_top_level_label: null
+  markdown:
+    descriptive_class_title: false
+    docstrings_as_blockquote: false
+    escape_html_in_docstring: false

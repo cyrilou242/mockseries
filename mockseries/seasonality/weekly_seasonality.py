@@ -8,15 +8,14 @@ from mockseries.seasonality.period_seasonality import PeriodSeasonality
 class WeeklySeasonality(PeriodSeasonality):
     """Realistic weekly seasonality from a set of time/value constraints.
 
-    Maximum precision for interpolation is seconds.
-    Maximum granularity for generation is microseconds.
+    Finest granularity for constraints and generation is microseconds.
     The interpolation method is [PCHIP](https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.PchipInterpolator.html#scipy-interpolate-pchipinterpolator).
 
     Args:
     time_value_constraints: A dict of `{time: value}` constraints. The curve will pass through these points.
     Pass time as a timedelta between `0 days 00:00:00 and `6 days 23:59:59`. For instance, `{timedelta(days=3): 4.2}`
     Day 0 corresponds to Monday, day 6 corresponds to Sunday.
-    utc_offset: The offset from UTC of the time. For instance, if you give constraints with GMT+2 times in mind, pass `timedelta(hours=2)`.
+    utc_offset: The offset from UTC of the time. For instance, if you give constraints with GMT-8 times in mind, pass `timedelta(hours=-8)`.
     Default behavior considers times are passed as UTC.
 
     Examples:
