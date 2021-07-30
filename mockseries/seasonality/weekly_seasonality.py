@@ -17,6 +17,7 @@ class WeeklySeasonality(PeriodSeasonality):
     Day 0 corresponds to Monday, day 6 corresponds to Sunday.
     utc_offset: The offset from UTC of the time. For instance, if you give constraints with GMT-8 times in mind, pass `timedelta(hours=-8)`.
     Default behavior considers times are passed as UTC.
+    normalize: transform constraints to a multiplication factor for easy use in multiplicative interactions. Eg: [5, 10, 15] --> [0.5, 1, 1.5].
 
     Examples:
     ```python
@@ -32,6 +33,7 @@ class WeeklySeasonality(PeriodSeasonality):
     """
 
     MICROSECOND_SECONDS = 1e-06
+    MINUTE_SECONDS = 60
     HOUR_SECONDS = 3600
     DAY_SECONDS = 86400
     WEEK_SECONDS = 604_800
@@ -40,14 +42,16 @@ class WeeklySeasonality(PeriodSeasonality):
         self,
         time_value_constraints: Mapping[timedelta, Number],
         utc_offset: timedelta = timedelta(0),
+        normalize: bool = False,
     ) -> None:
-        super().__init__(time_value_constraints, utc_offset)
+        super().__init__(time_value_constraints, utc_offset, normalize)
 
     def _seconds_of_period_from_datetime(self, dt: datetime) -> float:
         """Returns the number of seconds since the start of the week for a datetime."""
         return (
             dt.weekday() * self.DAY_SECONDS
             + dt.hour * self.HOUR_SECONDS
+            + dt.minute * self.MINUTE_SECONDS
             + dt.second
             + dt.microsecond * self.MICROSECOND_SECONDS
         )

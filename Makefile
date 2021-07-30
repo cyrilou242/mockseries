@@ -38,6 +38,23 @@ package:
 doc-dep-install:
 	@pip install pydoc-markdown==3.13.0
 
+tutos-dep-install:
+	@pip install jupyter==1.0.0
+	@pip install nbconvert==6.0.7
+	#brew install pandoc ?
+
+tutos:
+	@jupyter nbconvert --to Markdown tutorials/*.ipynb
+	@mkdir -p website/static/img/tutorials
+	@cp -R tutorials/*_files website/static/img/tutorials && rm -r tutorials/?*_files || echo "No file found - continuing."
+	@sed -i -- "s/[(]\(.*\)_files[/]/\(\/img\/tutorials\/\1_files\//" tutorials/*.md
+	@rm tutorials/*.md--
+	@mkdir -p website/docs/tutorials/
+	@printf "{\"label\": \"Tutorials\",\"position\": 2}" > website/docs/tutorials/_category_.json
+	@cp tutorials/*.md website/docs/tutorials/
+	@rm tutorials/*.md
+	@echo "Tutorials generated"
+
 
 doc-boostrap:
 	@https://github.com/NiklasRosenstein/pydoc-markdown/tree/develop/examples/docusaurus

@@ -19,6 +19,7 @@ class YearlySeasonality(PeriodSeasonality):
     Ie timdedelta(days=59) always corresponds to March 1 for fitting.
     utc_offset: The offset from UTC of the time. For instance, if you give constraints with GMT-8 times in mind, pass `timedelta(hours=-8)`.
     Default behavior considers times are passed as UTC.
+    normalize: transform constraints to a multiplication factor for easy use in multiplicative interactions. Eg: [5, 10, 15] --> [0.5, 1, 1.5].
 
     Examples:
     ```python
@@ -41,8 +42,9 @@ class YearlySeasonality(PeriodSeasonality):
         self,
         time_value_constraints: Mapping[timedelta, Number],
         utc_offset: timedelta = timedelta(0),
+        normalize: bool = False,
     ) -> None:
-        super().__init__(time_value_constraints, utc_offset)
+        super().__init__(time_value_constraints, utc_offset, normalize)
 
     def _seconds_of_period_from_datetime(self, dt: datetime) -> float:
         """Returns the number of seconds since the start of the year for a datetime.

@@ -20,17 +20,20 @@ class PeriodSeasonality(Seasonality):
     Pass time as a timedelta in the period frame. For instance, for daily seasonality, the timedelta must be between `0:00:00` and `23:59:59`.
     utc_offset: The offset from UTC of the time. For instance, if you give constraints with GMT-8 times in mind, pass `timedelta(hours=-8)`.
     Default behavior considers times are passed as UTC.
+    normalize: transform constraints to a multiplication factor for easy use in multiplicative interactions. Eg: [5, 10, 15] --> [0.5, 1, 1.5].
     """
 
     MICROSECOND_SECONDS = 1e-06
     DAY_SECONDS = 86400
     # ensure the seasonality loop is smooth - the bigger the better
     INTERPOLATION_MARGIN = 100
+    NORMALIZATION_POINTS = 1000
 
     def __init__(
         self,
         time_value_constraints: Mapping[timedelta, Number],
         utc_offset: timedelta = timedelta(0),
+        normalize: bool = False,
     ) -> None:
         super().__init__()
         self._validate_keys(time_value_constraints.keys())
@@ -42,6 +45,9 @@ class PeriodSeasonality(Seasonality):
         self.vectorized_seconds_of_period_from_datetime = np.vectorize(
             self._seconds_of_period_from_datetime
         )
+        self._init_normalizer(normalize)
+
+    # fixme put default parameters in subclass only
 
     def _validate_keys(self, time_constraints: Iterable[timedelta]) -> None:
         invalid_keys = [
@@ -120,8 +126,30 @@ class PeriodSeasonality(Seasonality):
         )
         return PchipInterpolator(times_seconds, values)
 
+    def _init_normalizer(self, normalize: bool) -> None:
+        # quick dirty implem - must happen after other init
+        self.normalizer = np.vectorize(lambda x: x)
+        if normalize:
+            # init to make use of _sample_at
+            time_points = np.array(
+                [
+                    datetime(2020, 1, 1)
+                    + i
+                    * timedelta(
+                        seconds=self._seconds_in_period() / self.NORMALIZATION_POINTS
+                    )
+                    for i in range(self.NORMALIZATION_POINTS)
+                ]
+            )
+            values = self._sample_at(time_points)
+            self.normalizer = np.vectorize(
+                lambda x: 1 + (x - values.mean()) / values.mean()
+            )
+
     def _sample_at(self, time_points: np.ndarray) -> np.ndarray:
         """Samples a daily seasonality signal."""
-        return self.interpolation(
-            self.vectorized_seconds_of_period_from_datetime(time_points)
+        return self.normalizer(
+            self.interpolation(
+                self.vectorized_seconds_of_period_from_datetime(time_points)
+            )
         )

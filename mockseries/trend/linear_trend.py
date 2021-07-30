@@ -19,5 +19,5 @@ class LinearTrend(Trend):
     def _sample_at(self, time_points: np.ndarray) -> np.ndarray:
         """Sample the trend components."""
         return self.flat_base + (
-            self.coefficient * delta_from_start(time_points) / self.time_unit
+            self.coefficient * (delta_from_start(time_points) / self.time_unit)
         )
