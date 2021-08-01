@@ -23,12 +23,9 @@ class WeeklySeasonality(PeriodSeasonality):
     ```python
     from datetime import timedelta, datetime
     from mockseries.seasonality import WeeklySeasonality
-    from mockseries.utils import plot_timeseries
 
     timeseries = WeeklySeasonality({timedelta(days=0): 1., timedelta(days=2): 1.8, timedelta(days=4): 1.1, timedelta(days=5): 2.5, timedelta(days=6): 0.6})
-    ts_index = [datetime(2021, 10, d, h) for d in range(1, 23) for h in range(1, 24)]
-    ts_values = timeseries.generate(ts_index)
-    plot_timeseries(ts_index, ts_values, graph_title="Weekly seasonality")
+    timeseries.preview_week(num_weeks=3)
     ```
     """
 

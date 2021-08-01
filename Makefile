@@ -41,8 +41,8 @@ doc-dep-install:
 tutos-dep-install:
 	@pip install jupyter==1.0.0
 	@pip install nbconvert==6.0.7
-	#brew install pandoc ?
 
+tutos:              ## Generate tutos documentation
 tutos:
 	@jupyter nbconvert --to Markdown tutorials/*.ipynb
 	@mkdir -p website/static/img/tutorials
@@ -61,13 +61,13 @@ doc-boostrap:
 	@npx @docusaurus/init@latest init docs  classic
 	@pydoc-markdown --bootstrap docusaurus
 
-doc:              ## Generate documentation
+doc:              ## Generate API documentation
 doc:
 	@pydoc-markdown -v
 	@echo "Doc generated"
 
-doc-server:          ## Launch a debug doc server
-doc-server: doc
+doc-server:          ## Generate doc and launch a debug doc server
+doc-server: doc tutos
 	@cd website && npm start
 
 doc2github:

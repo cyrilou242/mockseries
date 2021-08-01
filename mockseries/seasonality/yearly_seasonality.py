@@ -25,12 +25,9 @@ class YearlySeasonality(PeriodSeasonality):
     ```python
     from datetime import timedelta, datetime
     from mockseries.seasonality import YearlySeasonality
-    from mockseries.utils import plot_timeseries
 
     timeseries = YearlySeasonality({timedelta(days=15): 0.7, timedelta(days=45): 0.8, timedelta(days=75): 0.9, timedelta(days=105): 1.1, timedelta(days=200): 1.4, timedelta(days=340): 2})
-    ts_index = [datetime(y, m, d) for y in range(2021, 2025) for m in range(1, 13) for d in range(2, 30, 2)]
-    ts_values = timeseries.generate(ts_index)
-    plot_timeseries(ts_index, ts_values, graph_title="Yearly seasonality")
+    timeseries.preview_year(num_years=4)
     ```
     """
 

@@ -22,12 +22,9 @@ class DailySeasonality(PeriodSeasonality):
     ```python
     from datetime import timedelta, datetime
     from mockseries.seasonality import DailySeasonality
-    from mockseries.utils import plot_timeseries
 
     timeseries = DailySeasonality({timedelta(hours=0): 1.,timedelta(hours=12): 2,timedelta(hours=18): 3})
-    ts_index = [datetime(2021, 10, d, h) for d in range(1,4) for h in range(0,24,1)]
-    ts_values = timeseries.generate(ts_index)
-    plot_timeseries(ts_index, ts_values, graph_title="Daily seasonality")
+    timeseries.preview_day(num_days=4)
     ```
     """
 
