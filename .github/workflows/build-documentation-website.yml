@@ -13,10 +13,14 @@ jobs:
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v2.3.1
-      - name: Generate Markdown from DocString
+      - name: Generate Markdown from DocString 🤓
         run: |
           make doc-dep-install
           make doc
+      - name: Generate Markdown from Notebooks 🎯
+          run: |
+            make tutos-dep-install
+            make tutos
       - name: Build doc 🔧
         run: |
           cd website

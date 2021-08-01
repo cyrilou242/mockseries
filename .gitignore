@@ -12,3 +12,5 @@ website/docs/API Reference
 temp
 hello_mockseries.csv
 hello_mockseries.png
+website/static/img/tutorials
+website/docs/tutorials
