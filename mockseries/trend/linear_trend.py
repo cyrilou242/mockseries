@@ -2,11 +2,11 @@ from datetime import timedelta
 
 import numpy as np
 
-from mockseries.trend.trend import Trend
+from mockseries.signal.signal import Signal
 from mockseries.utils.dates import delta_from_start
 
 
-class LinearTrend(Trend):
+class LinearTrend(Signal):
     """y=ax+b."""
 
     def __init__(

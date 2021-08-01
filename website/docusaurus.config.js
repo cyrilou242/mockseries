@@ -1,4 +1,6 @@
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
+const math = require('remark-math');
+const katex = require('rehype-katex');
 module.exports = {
   title: 'mockseries',
   tagline: 'Easy and intuitive generation of synthetic timeseries for Python.',
@@ -88,6 +90,8 @@ module.exports = {
           // Please change this to your repo.
           editUrl:
             'https://github.com/cyrilou242/mockseries/edit/master/website/',
+          remarkPlugins: [math],
+          rehypePlugins: [katex],
         },
         blog: {
           showReadingTime: true,
@@ -98,6 +102,14 @@ module.exports = {
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
+        stylesheets: [
+          {
+            href: 'https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css',
+            integrity:
+              'sha384-Um5gpz1odJg5Z4HAmzPtgZKdTBHZdw8S29IecapCSB31ligYPhHQZMIlWLYQGVoc',
+            crossorigin: 'anonymous',
+          },
+  ],
       },
     ],
   ],

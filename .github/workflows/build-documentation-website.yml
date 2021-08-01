@@ -18,9 +18,9 @@ jobs:
           make doc-dep-install
           make doc
       - name: Generate Markdown from Notebooks 🎯
-          run: |
-            make tutos-dep-install
-            make tutos
+        run: |
+          make tutos-dep-install
+          make tutos
       - name: Build doc 🔧
         run: |
           cd website

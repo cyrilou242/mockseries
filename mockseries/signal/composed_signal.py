@@ -17,7 +17,3 @@ class ComposedSignal(Signal):
         return self.interaction.interact(
             *(signal._sample_at(time_points) for signal in self.signals)
         )
-
-    def __neg__(self) -> "Signal":
-        """Get the opposite of a signal."""
-        return ComposedSignal(self.interaction, *[-sig for sig in self.signals])

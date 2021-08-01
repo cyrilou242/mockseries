@@ -139,7 +139,7 @@ class Signal:
         return ComposedSignal(MultiplicativeInteraction(), self, other)
 
     def __sub__(self, other: Union["Signal", int, float]) -> "Signal":
-        """Multiply two signals."""
+        """Subtract one signal from another."""
         if isinstance(other, int) or isinstance(other, float):
             return self.__radd__(-other)
         return ComposedSignal(AdditiveInteraction(), self, -other)
