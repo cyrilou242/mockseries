@@ -23,8 +23,8 @@ jobs:
           make tutos
       - name: Build doc 🔧
         run: |
-          cd website
           make npm-dep-install
+          cd website
           npm install
           npm run build
       - name: Deploy Doc 🚀
