@@ -2,11 +2,11 @@ from datetime import timedelta
 
 import numpy as np
 
-from mockseries.trend.trend import Trend
+from mockseries.signal.signal import Signal
 from mockseries.utils.dates import delta_from_start
 
 
-class ExponentialTrend(Trend):
+class ExponentialTrend(Signal):
     """y=base_value+(a**t)."""
 
     def __init__(self, factor: float, time_unit: timedelta, base: float = 1) -> None:

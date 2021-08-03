@@ -1,9 +1,9 @@
 import numpy as np
 
-from mockseries.trend.trend import Trend
+from mockseries.signal.signal import Signal
 
 
-class FlatTrend(Trend):
+class FlatTrend(Signal):
     """y=start_value."""
 
     def __init__(self, value: float) -> None:
