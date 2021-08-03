@@ -75,6 +75,6 @@ doc2github:
 	#todo
 	@cp -R html/${PACKAGE_NAME}/ public
 
-install-latex:
+npm-dep-install:
 	npm install --save remark-math@3 rehype-katex@4 hast-util-is-element@1.1.0
 
