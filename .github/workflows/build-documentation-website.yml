@@ -24,6 +24,7 @@ jobs:
       - name: Build doc 🔧
         run: |
           cd website
+          make npm-dep-install
           npm install
           npm run build
       - name: Deploy Doc 🚀
