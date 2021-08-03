@@ -47,7 +47,8 @@ tutos:
 	@jupyter nbconvert --to Markdown tutorials/*.ipynb
 	@mkdir -p website/static/img/tutorials
 	@cp -R tutorials/*_files website/static/img/tutorials && rm -r tutorials/?*_files || echo "No file found - continuing."
-	@sed -i -- "s/[(]\(.*\)_files[/]/\(\/img\/tutorials\/\1_files\//" tutorials/*.md && rm -f tutorials/*.md--
+	# sed on mac makes a copy of old files. sed on ubuntu does not
+	@sed -i -- "s/[(]\(.*\)_files[/]/\(\/img\/tutorials\/\1_files\//" tutorials/*.md && (rm tutorials/*.md-- || echo "Skipping delete")
 	@mkdir -p website/docs/tutorials/
 	@printf "{\"label\": \"Tutorials\",\"position\": 2}" > website/docs/tutorials/_category_.json
 	@cp tutorials/*.md website/docs/tutorials/
