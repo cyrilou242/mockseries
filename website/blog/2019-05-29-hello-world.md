@@ -1,17 +1,12 @@
 ---
-slug: hello-world
-title: Hello
-author: Endilie Yacop Sucipto
-author_title: Maintainer of Docusaurus
-author_url: https://github.com/endiliey
-author_image_url: https://avatars1.githubusercontent.com/u/17883920?s=460&v=4
-tags: [hello, docusaurus]
+slug: hello-mockseries
+title: mockseries baby steps
+author: Cyril de Catheu
+author_title: Maintainer of mockseries
+author_url: https://catheu.tech/
+author_image_url: https://catheu.tech/assets/portfolio.png
+tags: [hello, mockseries]
 ---
 
-Welcome to this blog. This blog is created with [**Docusaurus 2 alpha**](https://docusaurus.io/).
-
-<!--truncate-->
-
-This is a test post.
-
-A whole bunch of other information.
+Meet mockseries. 
+I've built this package because I needed to simulate timeseries.  
