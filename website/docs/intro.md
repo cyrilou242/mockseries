@@ -38,9 +38,22 @@ Here, **2** seasonalities **with a different period** are combined. It's as easy
 Many types of trends, seasonalities and noises are available.  
 Just combine them with the operators **+**, **-** and **\***.  
 
+## 3. Preview
+Quickly plot your signals 
+```python  
+# preview on minute, hour, day, month, year 
+seasonality.preview_week()
+timeseries.preview_month()
+##<style="width:100%; aspect-ratio:9/6;" src="">
+```
 
+<p align="center">
+  <img src="/img/tutorial/seasonality_preview.png" width="48%" alt="Seasonality preview"/>
+&nbsp; &nbsp; &nbsp; &nbsp;
+  <img src="/img/tutorial/timeseries_preview.png" width="48%" alt="Timeseries preview"/>
+</p>  
 
-## 3. Generate values 
+## 4. Generate values 
 Sample your timeseries on a timeframe.  
 ```python
 from datetime import datetime
@@ -58,7 +71,7 @@ For instance:
 timeframe of 1 hour, with a granularity of 1 **minute**: 60 points;  
 timeframe of 1 hour, with a granularity of 1 **second**: 3600 points. 
 
-## 4. Plot or write to csv 
+## 5. Plot or write to csv 
 ```python
 from mockseries.utils import plot_timeseries, write_csv
 
@@ -74,7 +87,7 @@ You will get something like this:
 </div>   
 
 Now it's your turn !  
-Go to the next page to explore interactions between components.  
+Go to the next page to learn how to combine signals.  
 Go directly to the [API Reference](./API%20Reference/mockseries/main) to checkout the available types of trends, seasonalities and noises.
 
 

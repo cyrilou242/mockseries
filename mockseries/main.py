@@ -3,14 +3,14 @@ import argparse
 
 
 def main() -> None:
-    """Runs BLABLA."""
+    """CLI not implemented."""
     parser = argparse.ArgumentParser()
 
     parser.add_argument(
         "--example",
         type=str,
         help="Example argument.",
-        default="Lol",
+        default="CLI not implemented.",
     )
 
     args = parser.parse_args()

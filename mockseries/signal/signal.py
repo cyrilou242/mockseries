@@ -122,7 +122,23 @@ class Signal:
 
         self._preview(
             granularity=timedelta(seconds=1),
-            period=num_hours * timedelta(days=1),
+            period=num_hours * timedelta(hours=1),
+            start_time=start_time,
+        )
+
+    def preview_minute(
+        self, num_minutes: int = 1, start_time: Optional[datetime] = None
+    ) -> None:
+        """Plot one minute of signal with a centisecond granularity.
+
+        Args:
+            num_minutes: Number of hours to plot.
+            start_time: Time from which to start. If None, defaults to current datetime.
+        """
+
+        self._preview(
+            granularity=timedelta(milliseconds=10),
+            period=num_minutes * timedelta(minutes=1),
             start_time=start_time,
         )
 
