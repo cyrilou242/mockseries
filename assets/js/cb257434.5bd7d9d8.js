@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdoc=self.webpackChunkdoc||[]).push([[9732],{7393:function(s){s.exports=JSON.parse('{"allTagsPath":"/blog/tags","slug":"mockseries","name":"mockseries","count":1,"permalink":"/blog/tags/mockseries"}')}}]);
