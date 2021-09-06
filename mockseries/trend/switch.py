@@ -9,7 +9,17 @@ from mockseries.transition.transition import Transition
 
 
 class Switch(Signal):
-    """y=start_value."""
+    """A flat signal for which the value changes at a given time.
+
+    Used to create signals with events happening at a given time. For instance: anomalies.
+
+    Args:
+        start_time: Time at which the signal value changes.
+        base_value: Original value. Defaults to 0.
+        switch_value: New value at switch time. Defaults to 1.
+        stop_time: Time at which the signal changes back to the original value. If not set, the signal never changes back.
+        transition: The type of transition. See [Transition](../transition/transition) object. Defaults to a [DirectTransition](../transition/direct_transition).
+    """
 
     def __init__(
         self,
