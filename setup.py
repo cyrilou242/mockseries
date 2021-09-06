@@ -17,10 +17,10 @@ setup(
         "numpy==1.19.5",
     ],
     project_urls={
-            "Bug Tracker": "https://github.com/cyrilou242/mockseries/issues",
-            "Documentation": "http://mockseries.catheu.tech/",
-            "Source Code": "https://github.com/cyrilou242/mockseries",
-        },
+        "Bug Tracker": "https://github.com/cyrilou242/mockseries/issues",
+        "Documentation": "http://mockseries.catheu.tech/",
+        "Source Code": "https://github.com/cyrilou242/mockseries",
+    },
     classifiers=[
         "Intended Audience :: Science/Research",
         "Intended Audience :: Developers",
