@@ -2,17 +2,9 @@ import warnings
 from datetime import datetime
 from typing import Collection, List, Optional, Union
 
+import matplotlib as mpl
+import matplotlib.pyplot as plt
 import numpy as np
-
-try:
-    import matplotlib as mpl
-    import matplotlib.pyplot as plt
-except ModuleNotFoundError:
-    raise ModuleNotFoundError(
-        "No module named 'matplotlib'.\n"
-        "Matplotlib is not installed by the mockseries package, but is required to use the plot utils.\n"
-        "Please install matplotlib."
-    )
 
 
 def plot_timeseries(
