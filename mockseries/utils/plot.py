@@ -2,10 +2,9 @@ import warnings
 from datetime import datetime
 from typing import Collection, List, Optional, Union
 
-import numpy as np
-
 import matplotlib as mpl
 import matplotlib.pyplot as plt
+import numpy as np
 
 
 def plot_timeseries(
