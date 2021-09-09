@@ -4,15 +4,8 @@ from typing import Collection, List, Optional, Union
 
 import numpy as np
 
-try:
-    import matplotlib as mpl
-    import matplotlib.pyplot as plt
-except ModuleNotFoundError:
-    raise ModuleNotFoundError(
-        "No module named 'matplotlib'.\n"
-        "Matplotlib is not installed by the mockseries package, but is required to use the plot utils.\n"
-        "Please install matplotlib."
-    )
+import matplotlib as mpl
+import matplotlib.pyplot as plt
 
 
 def plot_timeseries(
