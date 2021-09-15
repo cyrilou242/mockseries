@@ -50,7 +50,7 @@ class LambdaTransition(Transition):
     ):
         self._check_transitions_functions(transition_function, stop_function)
         self.transition_window = transition_window
-        self.stop_window = stop_window if stop_window else transition_window
+        self.stop_window = stop_window if stop_window else timedelta()
 
         stop_function = (
             stop_function if stop_function else lambda x: 1 - transition_function(1 - x)
