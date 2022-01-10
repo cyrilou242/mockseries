@@ -84,7 +84,11 @@ module.exports = {
   presets: [
     [
       '@docusaurus/preset-classic',
-      {
+      { 
+        googleAnalytics: {
+          trackingID: 'UA-143787397-1',
+          anonymizeIP: true,
+        },
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
