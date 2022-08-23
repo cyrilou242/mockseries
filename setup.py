@@ -16,7 +16,7 @@ setup(
     description="Easy and intuitive generation of synthetic timeseries.",
     install_requires=[
         "matplotlib==3.3.4",
-        "numpy==1.19.5",
+        "numpy==1.22.0",
         "scipy==1.5.4",
     ],
     project_urls={
