@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="mockseries",
-    version="0.1.4",
+    version="0.2.0",
     long_description=long_description,
     long_description_content_type="text/markdown",
     packages=find_packages(),
@@ -15,9 +15,9 @@ setup(
     author_email="cdecatheu@hey.com",
     description="Easy and intuitive generation of synthetic timeseries.",
     install_requires=[
-        "matplotlib==3.3.4",
-        "numpy==1.19.5",
-        "scipy==1.5.4",
+        "matplotlib==3.7.1",
+        "numpy==1.24.4",
+        "scipy==1.11.1",
     ],
     project_urls={
         "Bug Tracker": "https://github.com/cyrilou242/mockseries/issues",
