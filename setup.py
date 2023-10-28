@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="mockseries",
-    version="0.2.1",
+    version="0.2.0",
     long_description=long_description,
     long_description_content_type="text/markdown",
     packages=find_packages(),
