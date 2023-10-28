@@ -8,7 +8,6 @@ class ComposedSignal(Signal):
     """Combines multiple signals."""
 
     def __init__(self, interaction: Interaction, *signal: Signal) -> None:
-
         self.interaction = interaction
         self.signals = signal
 
