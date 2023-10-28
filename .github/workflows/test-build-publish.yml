@@ -4,7 +4,7 @@ jobs:
   test-build-publish:
     environment: deploy
     name: Publish distributions to Test PyPI and PyPI
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@master
     - name: Set up Python 3.6
