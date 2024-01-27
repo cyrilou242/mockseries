@@ -33,6 +33,7 @@ setup(
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
         "Programming Language :: Python :: 3 :: Only",
         "Topic :: Software Development",
         "Topic :: Scientific/Engineering",
@@ -43,7 +44,7 @@ setup(
         "Operating System :: Unix",
         "Operating System :: MacOS",
     ],
-    python_requires=">=3.6",
+    python_requires=">=3.8,<=3.11",
     entry_points={
         "console_scripts": [
             "mockseries = mockseries.main:main",
