@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="mockseries",
-    version="0.2.1",
+    version="0.3.0",
     long_description=long_description,
     long_description_content_type="text/markdown",
     packages=find_packages(),
@@ -16,8 +16,8 @@ setup(
     description="Easy and intuitive generation of synthetic timeseries.",
     install_requires=[
         "matplotlib==3.7.1",
-        "numpy==1.24.4",
-        "scipy==1.11.1",
+        "numpy==1.26.3",
+        "scipy==1.11.4",
     ],
     project_urls={
         "Bug Tracker": "https://github.com/cyrilou242/mockseries/issues",
@@ -30,10 +30,10 @@ setup(
         "License :: OSI Approved :: BSD License",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
         "Programming Language :: Python :: 3 :: Only",
         "Topic :: Software Development",
         "Topic :: Scientific/Engineering",
@@ -44,7 +44,7 @@ setup(
         "Operating System :: Unix",
         "Operating System :: MacOS",
     ],
-    python_requires=">=3.8,<=3.11",
+    python_requires=">=3.9,<=3.12",
     entry_points={
         "console_scripts": [
             "mockseries = mockseries.main:main",

@@ -10,8 +10,16 @@
 
 ## Installation  
     
-    #python >=3.6.6 
+    #python >=3.9
     pip install mockseries
+
+For older versions of python, here is the compatibility matrix: 
+
+| mockseries version | Python versions |
+| --- | --- |
+| 0.3.x | 3.9 - 3.12|
+| 0.2.x | 3.8 - 3.11|
+| 0.1.x | 3.6 - 3.8|
     
 ## Contributing
 Contributions are welcome!   
