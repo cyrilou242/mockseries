@@ -1,4 +1,5 @@
 """Handy constants for common granularities/periods."""
+
 from datetime import timedelta
 
 MICRO_SECOND = timedelta(microseconds=1)

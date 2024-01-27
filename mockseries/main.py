@@ -1,4 +1,5 @@
 """CLI interface."""
+
 import argparse
 
 
