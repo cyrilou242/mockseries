@@ -40,7 +40,7 @@ doc-dep-install:
 
 tutos-dep-install:
 	@pip install jupyter==1.0.0
-	@pip install nbconvert==6.0.7
+	@pip install nbconvert==6.4.4
 
 tutos:              ## Generate tutos documentation
 tutos:
