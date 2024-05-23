@@ -44,7 +44,7 @@ setup(
         "Operating System :: Unix",
         "Operating System :: MacOS",
     ],
-    python_requires=">=3.9,<=3.12",
+    python_requires=">=3.9,<3.13",
     entry_points={
         "console_scripts": [
             "mockseries = mockseries.main:main",
